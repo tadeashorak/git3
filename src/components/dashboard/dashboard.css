@@ -1,0 +1,100 @@
+.toolbar {
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.period-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--local-card-text);
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.period-btn.active {
+  background: rgba(255,255,255,0.08);
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,0.06);
+}
+
+.stats-grid {
+  display: grid;
+  /* 12-column layout so some metrics can be larger (prominent) */
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+  margin-top: 12px;
+  align-items: start;
+}
+.metric-item { grid-column: span 3 }
+.metric-item.prominent { grid-column: span 6 }
+.metric-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+  padding: 14px;
+  border-radius: 12px;
+  color: var(--local-card-text);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.metric-card:focus,
+.metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+.metric-header { display:flex; justify-content:space-between; align-items:center }
+.metric-name { font-size: 0.95rem; opacity: 0.98 }
+.metric-delta { font-size: 0.85rem; opacity: 0.95 }
+.metric-delta.positive { color: #34d399 }
+.metric-delta.negative { color: #f87171 }
+.metric-value { font-size: 1.4rem; font-weight:700 }
+.metric-spark { opacity: 0.95 }
+
+/* small tweaks for the dashboard wrapper */
+.dashboard-grid { margin-top: 12px }
+.dashboard-card { background: rgba(255,255,255,0.04); padding: 12px; border-radius:8px }
+
+/* loading skeletons */
+.skeleton { background: linear-gradient(90deg,#2a2a2a,#343434,#2a2a2a); background-size: 200% 100%; animation: shimmer 1.2s infinite; border-radius: 8px }
+.skeleton.h { height: 18px; width: 40% }
+.skeleton.v { height: 36px; width: 65% }
+@keyframes shimmer { from { background-position: 200% 0 } to { background-position: -200% 0 } }
+
+@media (max-width: 900px) {
+  .stats-grid { grid-template-columns: repeat(6,1fr); }
+  .metric-item { grid-column: span 3 }
+  .metric-item.prominent { grid-column: span 6 }
+}
+
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: repeat(1, 1fr) }
+  .metric-item, .metric-item.prominent { grid-column: auto }
+}
+
+/* Dashboard container box (centered, max 1440px) */
+.dashboard-box {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 12px;
+}
+
+/* Ensure dashboard is at least 1080px on wider viewports for better layout */
+@media (min-width: 1080px) {
+  .dashboard-box { min-width: 1080px }
+}
+
+.metric-item.prominent .metric-card { padding: 20px }
+.metric-item.prominent .metric-value { font-size: 1.8rem }
+.dashboard-panel {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 24px auto;
+  padding: 20px;
+  border-radius: 12px;
+  /* Use same auth brown color for the dashboard panel */
+  background: var(--auth-card-bg);
+  color: var(--auth-card-text);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}

@@ -1,0 +1,98 @@
+/*
+  LoginForm styles: uses site CSS variables from `src/index.css`.
+  Change colors in :root variables (e.g. --primary, --btn-bg, --text).
+*/
+.auth-card {
+  /* Login / auth card (fixed, brown) */
+  width: 360px; /* desired visual card width on most screens */
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 48px auto;
+  padding: 20px;
+  border-radius: 14px; /* slightly more rounded */
+  background: var(--auth-card-bg);
+  color: var(--auth-card-text);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+.login-title {
+  margin: 0 0 12px 0;
+  font-size: 1.25rem;
+  color: inherit; /* inherit from parent so card types can control color */
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(120px, 1fr) );
+  gap: 12px;
+}
+.dashboard-card {
+  background: rgba(255,255,255,0.06);
+  padding: 12px;
+  border-radius: 8px;
+  text-align: left;
+}
+.login-form { display: grid; gap: 12px; }
+.label { display: flex; flex-direction: column; gap: 6px; }
+.label-text { font-size: 0.85rem; color: rgba(255,255,255,0.9); }
+.input {
+  padding: 10px 12px;
+  border: 1px solid #e7ddd3;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  background: #ffffff;
+  color: #111827;
+}
+.input::placeholder { color: #9ca3af; }
+.input:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+  border-color: var(--primary);
+}
+.btn {
+  padding: 10px 12px;
+  /* Invert button to make it pop on brown background */
+  background: #ffffff;
+  color: var(--auth-card-bg);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+.error { color: var(--error); font-size: 0.9rem; }
+
+/* On narrow viewports, allow the card to shrink so it doesn't overflow */
+@media (max-width: 420px) {
+  .login-card { width: 92%; margin: 24px auto; padding: 16px; }
+}
+
+/* switch button at bottom of card */
+.switch-row {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+}
+.switch-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--local-card-text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.switch-btn:hover { opacity: 0.95; }
+
+/* Dashboard panel (used for admin area) - independent from auth card */
+.dashboard-panel {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 24px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}

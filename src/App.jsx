@@ -1,11 +1,11 @@
+import LoginForm from './components/LoginForm'
 import './App.css'
 
-function App() {
- return (
- <>
- Hello, Codecademy!
- </>
- )
+export default function App() {
+	return (
+		<main className="app-main">
+			<LoginForm />
+		</main>
+	)
 }
 
-export default App
